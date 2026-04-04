@@ -35,8 +35,8 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && jumpTimer <= 0f)
         {
 
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jump, rb.linearVelocity.z);
-            jumpTimer = jumpCooldown;
+            //rb.linearVelocity = new Vector3(rb.linearVelocity.x, jump, rb.linearVelocity.z);
+            //jumpTimer = jumpCooldown;
 
 
         }

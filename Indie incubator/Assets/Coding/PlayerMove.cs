@@ -32,11 +32,16 @@ public class PlayerMove : MonoBehaviour
         rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
 
 
+        
+    }
+
+    void FixedUpdate()
+    {
         if (Input.GetKeyDown(KeyCode.Space) && jumpTimer <= 0f)
         {
-
-            //rb.linearVelocity = new Vector3(rb.linearVelocity.x, jump, rb.linearVelocity.z);
-            //jumpTimer = jumpCooldown;
+            Debug.Log("I try to jump");
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jump, rb.linearVelocity.z);
+            jumpTimer = jumpCooldown;
 
 
         }

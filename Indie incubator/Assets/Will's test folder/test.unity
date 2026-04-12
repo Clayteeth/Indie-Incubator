@@ -380,7 +380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6781930313108917999, guid: 8f4b0ebcc1d89b64693d3b214d3dba20, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.8498
+      value: 59.3
       objectReference: {fileID: 0}
     - target: {fileID: 6781930313108917999, guid: 8f4b0ebcc1d89b64693d3b214d3dba20, type: 3}
       propertyPath: m_LocalRotation.w
@@ -431,6 +431,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8757038610384181696, guid: 8f4b0ebcc1d89b64693d3b214d3dba20, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1324220167}
+    - targetCorrespondingSourceObject: {fileID: 8757038610384181696, guid: 8f4b0ebcc1d89b64693d3b214d3dba20, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1324220173}
   m_SourcePrefab: {fileID: 100100000, guid: 8f4b0ebcc1d89b64693d3b214d3dba20, type: 3}
 --- !u!1001 &497271184
 PrefabInstance:
@@ -1270,6 +1273,21 @@ MonoBehaviour:
   teleportHeight: 25
   duration: 5
   vfx: {fileID: 866206969}
+--- !u!114 &1324220173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324220160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca732d7b4cbb5a42a8a414671489cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractor
+  interactableTag: Interactable
+  interactRange: 3
+  playerCamera: {fileID: 0}
 --- !u!1 &1417865151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,8 +1430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ccfddab4c7dc0f40a9e88192f28ca3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  rotationSpeed: 60
-  rotationAngle: {x: 0, y: 0, z: -90}
+  doorSpeed: 2
+  rotationAngle: {x: 0, y: 0, z: 90}
 --- !u!4 &1489064521
 Transform:
   m_ObjectHideFlags: 0
@@ -1484,6 +1502,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathBox
   respawnPoint: {fileID: 1099903757}
+  deathDelay: 1
+  respawnDelay: 3
 --- !u!65 &1693363309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1709,7 +1729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2111092470
 Transform:
   m_ObjectHideFlags: 0

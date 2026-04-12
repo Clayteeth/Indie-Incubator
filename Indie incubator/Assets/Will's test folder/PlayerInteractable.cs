@@ -1,15 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteractable : MonoBehaviour
 {
     // Remember to add Rigidbody to whatever this is attached to
-
     public string interactableTag;
-
-    //public GameObject door;
-
     private GameObject objInRange;
 
     private void Update()
@@ -17,7 +11,7 @@ public class PlayerInteractable : MonoBehaviour
         if (objInRange != null && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Interacted with object: " + objInRange.name);
-            objInRange.GetComponent<Door>().PlayerInteract();
+            //objInRange.GetComponent<Door>().PlayerInteract();
         }
     }
 

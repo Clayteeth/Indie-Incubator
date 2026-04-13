@@ -4,7 +4,7 @@ public class PlayerInteractor : MonoBehaviour
 {
     // Using Raycast to find interactable game object
 
-    public string interactableTag;
+    //public string interactableTag;
     public float interactRange = 3f;
     public Camera playerCamera;
 

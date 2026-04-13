@@ -9,7 +9,7 @@ public class Teleport : MonoBehaviour
     private bool isTeleported = false;
     Rigidbody rb;
 
-    public GameObject vfx;
+    public GameObject vfx; // placeholder atm
 
     private void Start()
     {

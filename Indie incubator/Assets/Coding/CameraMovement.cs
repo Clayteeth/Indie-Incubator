@@ -11,6 +11,14 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+
+
+        xRotation = transform.localRotation.eulerAngles.x;
+
+        if (xRotation > 180f)
+        {
+            xRotation -= 360f;
+        }
     }
 
     // Update is called once per frame

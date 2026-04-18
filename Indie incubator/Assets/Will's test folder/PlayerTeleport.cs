@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class PlayerTeleport : MonoBehaviour
 {
-    public float teleportHeight = 25f; // the offset height of the 2 levels
+    public Vector3 teleportOffset = new Vector3(0, 25, 0);
+    //public float teleportHeight = 25f; // the offset height of the 2 levels
     public float duration = 5f;
 
     public float navMeshSampleRadius = 5f;
@@ -39,7 +40,7 @@ public class PlayerTeleport : MonoBehaviour
 
         // Pick which navmesh to land on based on current level
         NavMeshSurface targetSurface = isOnLevelA ? navMeshB : navMeshA;
-        float targetOffset = isOnLevelA ? teleportHeight : -teleportHeight;
+        Vector3 targetOffset = isOnLevelA ? teleportOffset : -teleportOffset;
 
         Vector3 targetDestination = TryGetSafePosition(targetOffset, targetSurface);
         transform.position = targetDestination;
@@ -52,7 +53,7 @@ public class PlayerTeleport : MonoBehaviour
 
         // Return to original level
         NavMeshSurface returnSurface = isOnLevelA ? navMeshB : navMeshA;
-        float returnOffset = isOnLevelA ? teleportHeight : -teleportHeight;
+        Vector3 returnOffset = isOnLevelA ? teleportOffset : -teleportOffset;
 
         Vector3 returnDestination = TryGetSafePosition(returnOffset, returnSurface);
         transform.position = returnDestination;
@@ -65,9 +66,9 @@ public class PlayerTeleport : MonoBehaviour
         vfx.SetActive(false);
     }
 
-    Vector3 TryGetSafePosition(float yOffset, NavMeshSurface surface)
+    Vector3 TryGetSafePosition(Vector3 offset, NavMeshSurface surface)
     {
-        Vector3 targetPos = transform.position + new Vector3(0f, yOffset, 0f);
+        Vector3 targetPos = transform.position + offset;
 
         Collider[] overlaps = Physics.OverlapSphere(targetPos, 0.5f); // check if target is in any collider
 

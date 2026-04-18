@@ -4,12 +4,12 @@ public class platfrommove : MonoBehaviour
 {
     [SerializeField] float speed = 2f;
     [SerializeField] Transform[] points;
+    [SerializeField] private float cooldownTime = 5f;
 
     private int targetPoint;
     private bool isMoving;
     private bool canActivate;
-
-    private Rigidbody rb;
+    private float timer = 0f;
 
     void Start()
     {
@@ -17,22 +17,23 @@ public class platfrommove : MonoBehaviour
         targetPoint = 1;
         isMoving = false;
         canActivate = true;
-
-        rb = GetComponent<Rigidbody>();
-        rb.position = points[0].position;
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        if (timer > 0f)
+        {
+            timer -= Time.deltaTime;
+        }
+
         if (isMoving == false)
         {
             return;
         }
 
-        Vector3 newPos = Vector3.MoveTowards(rb.position, points[targetPoint].position, speed * Time.fixedDeltaTime);
-        rb.MovePosition(newPos);
+        transform.position = Vector3.MoveTowards(transform.position, points[targetPoint].position, speed * Time.deltaTime);
 
-        if (rb.position == points[targetPoint].position)
+        if (transform.position == points[targetPoint].position)
         {
             isMoving = false;
 
@@ -51,10 +52,11 @@ public class platfrommove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (canActivate == true && isMoving == false)
+            if (canActivate == true && isMoving == false && timer <= 0f)
             {
                 isMoving = true;
                 canActivate = false;
+                timer = cooldownTime;
             }
         }
     }

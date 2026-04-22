@@ -4,7 +4,7 @@ public class CameraMovement : MonoBehaviour
 {
     public float mouseSensitivity = 200f;
     public Transform playerBody;
-
+    private Rigidbody playerRb;
     float xRotation = 0f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,10 +19,12 @@ public class CameraMovement : MonoBehaviour
         {
             xRotation -= 360f;
         }
+
+        playerRb = playerBody.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -32,6 +34,8 @@ public class CameraMovement : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
-        playerBody.Rotate(Vector3.up * mouseX);
+        Quaternion deltaRotation = Quaternion.Euler(0f, mouseX, 0f);
+        playerRb.MoveRotation(playerRb.rotation * deltaRotation);
+        //playerBody.Rotate(Vector3.up * mouseX);
     }
 }

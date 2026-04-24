@@ -52,6 +52,8 @@ public class platfrommove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            collision.transform.SetParent(transform);
+
             if (canActivate == true && isMoving == false && timer <= 0f)
             {
                 isMoving = true;
@@ -65,6 +67,8 @@ public class platfrommove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            collision.transform.SetParent(null);
+
             if (isMoving == false)
             {
                 canActivate = true;

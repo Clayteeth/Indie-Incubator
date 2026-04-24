@@ -6,16 +6,21 @@ public class ButtumWaterLevel : MonoBehaviour
     public float lowerAmount = 5f;
     public float speed = 2f;
 
+    public Transform doorOpen;
+    public float openAmount = 5f;
+    public float openSpeed = 2f;
+
     private bool playerInRange;
     private bool isLowering;
+    private bool isOpening;
 
-    private Vector3 startPos;
-    private Vector3 targetPos;
+    private Vector3 waterTargetPos;
+    private Vector3 doorTargetPos;
 
     void Start()
     {
-        startPos = platform.position;
-        targetPos = new Vector3(platform.position.x, platform.position.y - lowerAmount, platform.position.z);
+        waterTargetPos = new Vector3(platform.position.x, platform.position.y - lowerAmount, platform.position.z);
+        doorTargetPos = new Vector3(doorOpen.position.x + openAmount, doorOpen.position.y, doorOpen.position.z);
     }
 
     void Update()
@@ -23,15 +28,26 @@ public class ButtumWaterLevel : MonoBehaviour
         if (playerInRange == true && Input.GetKeyDown(KeyCode.E))
         {
             isLowering = true;
+            isOpening = true;
         }
 
         if (isLowering == true)
         {
-            platform.position = Vector3.MoveTowards(platform.position, targetPos, speed * Time.deltaTime);
+            platform.position = Vector3.MoveTowards(platform.position, waterTargetPos, speed * Time.deltaTime);
 
-            if (Vector3.Distance(platform.position, targetPos) < 0.01f)
+            if (Vector3.Distance(platform.position, waterTargetPos) < 0.01f)
             {
                 isLowering = false;
+            }
+        }
+
+        if (isOpening == true)
+        {
+            doorOpen.position = Vector3.MoveTowards(doorOpen.position, doorTargetPos, openSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(doorOpen.position, doorTargetPos) < 0.01f)
+            {
+                isOpening = false;
             }
         }
     }

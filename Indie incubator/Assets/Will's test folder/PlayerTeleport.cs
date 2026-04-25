@@ -1,19 +1,20 @@
 using System.Collections;
 using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PlayerTeleport : MonoBehaviour
 {
     public Vector3 teleportOffset = new Vector3(0, 25, 0);
-    //public float teleportHeight = 25f; // the offset height of the 2 levels
+
     public float duration = 5f;
 
     public float navMeshSampleRadius = 5f;
     public NavMeshSurface navMeshA; // lower level
     public NavMeshSurface navMeshB; // upper level
 
-    private bool isTeleported = false;
+    private bool isTeleporting = false;
     private bool isOnLevelA = true;
     Rigidbody rb;
 
@@ -23,19 +24,54 @@ public class PlayerTeleport : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         vfx.SetActive(false);
+        isOnLevelA = true;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && !isTeleported)
+        if (Input.GetKeyDown(KeyCode.T) && !isTeleporting)
         {
-            StartCoroutine(Teleporting());
+            StartCoroutine(Teleporting2());
         }
+        if (Input.GetKeyDown(KeyCode.P)) //Get player position
+        {
+            Debug.Log("Player current pos: " + transform.position);
+        }
+    }
+
+    IEnumerator Teleporting2()
+    {
+        isTeleporting = true;
+        vfx.SetActive(true);
+
+        // check if hitting collider
+        // TP to offset if no, unable to TP if yes
+        if(isTeleportingIntoCollider(teleportOffset))
+        {
+            yield break;
+        }
+        Vector3 originalPos = transform.position;
+        Vector3 targetPos = transform.position + teleportOffset;
+        transform.position = targetPos;
+
+        yield return new WaitForSeconds(duration);
+
+        // check if hitting collider
+        // TP to offset if no, TP to original pos if yes
+        if (isTeleportingIntoCollider(-teleportOffset))
+        {
+            transform.position = originalPos;
+        }
+        Vector3 returnPos = transform.position -teleportOffset;
+        transform.position = returnPos;
+
+        isTeleporting = false;
+        vfx.SetActive(false);
     }
 
     IEnumerator Teleporting()
     {
-        isTeleported = true;
+        isTeleporting = true;
         vfx.SetActive(true);
 
         // Pick which navmesh to land on based on current level
@@ -62,7 +98,7 @@ public class PlayerTeleport : MonoBehaviour
 
         isOnLevelA = !isOnLevelA;
 
-        isTeleported = false;
+        isTeleporting = false;
         vfx.SetActive(false);
     }
 
@@ -83,5 +119,17 @@ public class PlayerTeleport : MonoBehaviour
             Debug.LogWarning("No safe navmesh position found on " + surface.name);
         }
         return targetPos; 
+    }
+
+    bool isTeleportingIntoCollider(Vector3 offset)
+    {
+        Vector3 targetPos = transform.position + offset;
+        Collider[] overlaps = Physics.OverlapSphere(targetPos, 0.5f); // check if target is in any collider
+        if (overlaps.Length > 0)
+        {
+            Debug.Log("Destination blocked, unable to teleport");
+            return true;          
+        }
+        return false;
     }
 }

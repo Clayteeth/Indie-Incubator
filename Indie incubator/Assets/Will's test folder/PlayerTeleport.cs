@@ -35,35 +35,49 @@ public class PlayerTeleport : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P)) //Get player position
         {
-            Debug.Log("Player current pos: " + transform.position);
+            Debug.Log("Player current pos: " + rb.position);
         }
     }
 
     IEnumerator Teleporting2()
     {
-        isTeleporting = true;
-        vfx.SetActive(true);
-
         // check if hitting collider
         // TP to offset if no, unable to TP if yes
         if(isTeleportingIntoCollider(teleportOffset))
         {
+            Debug.Log("Unable to teleport");
             yield break;
         }
-        Vector3 originalPos = transform.position;
-        Vector3 targetPos = transform.position + teleportOffset;
-        transform.position = targetPos;
+
+        isTeleporting = true;
+        vfx.SetActive(true);
+
+        Vector3 originalPos = rb.position;
+        Debug.Log("Original Pos Step 1: " +originalPos);
+        Vector3 targetPos = rb.position + teleportOffset;
+        rb.position = targetPos;
 
         yield return new WaitForSeconds(duration);
 
         // check if hitting collider
         // TP to offset if no, TP to original pos if yes
+        Debug.Log("Original Pos Step 2: " + originalPos);
         if (isTeleportingIntoCollider(-teleportOffset))
         {
-            transform.position = originalPos;
+            Debug.Log("Teleporting to original pos: " +originalPos);
+            rb.position = originalPos;
+            Debug.Log("Player current pos: " + rb.position);
+            //yield return new WaitForSecondsRealtime(0.5f);
+            //Time.timeScale = 0f;
+            //yield return new WaitForSecondsRealtime(0.5f);
+            //Time.timeScale = 1f;
         }
-        Vector3 returnPos = transform.position -teleportOffset;
-        transform.position = returnPos;
+        else
+        {
+            Vector3 returnPos = rb.position - teleportOffset;
+            rb.position = returnPos;
+        }
+        
 
         isTeleporting = false;
         vfx.SetActive(false);
@@ -127,7 +141,7 @@ public class PlayerTeleport : MonoBehaviour
         Collider[] overlaps = Physics.OverlapSphere(targetPos, 0.5f); // check if target is in any collider
         if (overlaps.Length > 0)
         {
-            Debug.Log("Destination blocked, unable to teleport");
+            Debug.Log("Destination blocked");
             return true;          
         }
         return false;

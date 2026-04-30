@@ -9,7 +9,21 @@ public class NonoGas : MonoBehaviour
     private bool playerInRange;
     private bool isLowering;
 
-    public GameObject particleEffect;
+    public GameObject particleEffect1;
+    public GameObject particleEffect2;
+    public GameObject particleEffect3;
+    public GameObject particleEffect4;
+    public GameObject particleEffect5;
+    public GameObject particleEffect6;
+    public GameObject particleEffect7;
+    public GameObject particleEffect8;
+    public GameObject particleEffect9;
+    public GameObject particleEffect10;
+    public GameObject particleEffect11;
+    public GameObject particleEffect12;
+    public GameObject particleEffect13;
+    public GameObject particleEffect14;
+    public GameObject particleEffect15;
 
     private Vector3 startPos;
     private Vector3 targetPos;
@@ -26,9 +40,23 @@ public class NonoGas : MonoBehaviour
         {
             isLowering = true;
 
-            if (particleEffect != null)
+            if (particleEffect1 != null)
             {
-                particleEffect.SetActive(false);
+                particleEffect1.SetActive(false);
+                particleEffect2.SetActive(false);
+                particleEffect3.SetActive(false);
+                particleEffect4.SetActive(false);
+                particleEffect5.SetActive(false);
+                particleEffect6.SetActive(false);
+                particleEffect7.SetActive(false);
+                particleEffect8.SetActive(false);
+                particleEffect9.SetActive(false);
+                particleEffect10.SetActive(false);
+                particleEffect11.SetActive(false);
+                particleEffect12.SetActive(false);
+                particleEffect13.SetActive(false);
+                particleEffect14.SetActive(false);
+                particleEffect15.SetActive(false);
             }
             
         }

@@ -29,14 +29,8 @@ public class EffectGasTigger : MonoBehaviour
     {
         if (particleEffect != null)
         {
-            particleEffect.Play();
-            particleEffect1.Play();
-            particleEffect2.Play();
-            particleEffect3.Play();
-            particleEffect4.Play();
-            particleEffect5.Play();
-            particleEffect6.Play();
-            particleEffect7.Play();
+            //particleEffect.Play();
+           
         }
     }
 }

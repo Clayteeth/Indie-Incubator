@@ -12,14 +12,27 @@ public class EffectGasTigger : MonoBehaviour
     public GameObject particleEffect7;
     public GameObject particleEffect8;
 
+    
+
     public float delay = 3f;
 
     private bool hasTriggered = false;
+
+    void Start()
+    {
+        particleEffect.SetActive(false);
+        particleEffect1.SetActive(false);
+        particleEffect2.SetActive(false);
+        particleEffect3.SetActive(false);
+        particleEffect4.SetActive(false);
+        //particleEffect5.SetActive(false);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !hasTriggered)
         {
+            Debug.Log("Player entered the trigger area.");
             hasTriggered = true;
             Invoke(nameof(PlayEffect), delay);
         }
@@ -29,8 +42,12 @@ public class EffectGasTigger : MonoBehaviour
     {
         if (particleEffect != null)
         {
-            //particleEffect.Play();
-           
+            particleEffect.SetActive(true);
+            particleEffect1.SetActive(true);
+            particleEffect2.SetActive(true);
+            particleEffect3.SetActive(true);
+            particleEffect4.SetActive(true);
+            //particleEffect5.SetActive(true);
         }
     }
 }

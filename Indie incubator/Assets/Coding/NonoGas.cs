@@ -24,12 +24,17 @@ public class NonoGas : MonoBehaviour
     public GameObject particleEffect13;
     public GameObject particleEffect14;
     public GameObject particleEffect15;
+    public GameObject gasTigger;
+
+    public BoxCollider gasTiggerCollider;
 
     private Vector3 startPos;
     private Vector3 targetPos;
 
     void Start()
     {
+        gasTiggerCollider = gasTigger.GetComponent<BoxCollider>();
+
         startPos = platform.position;
         targetPos = new Vector3(platform.position.x, platform.position.y - lowerAmount, platform.position.z);
     }
@@ -58,6 +63,10 @@ public class NonoGas : MonoBehaviour
                 particleEffect14.SetActive(false);
                 particleEffect15.SetActive(false);
             }
+            
+            gasTiggerCollider.enabled = false;
+
+
             
         }
 

@@ -6,18 +6,23 @@ public class CameraMovement : MonoBehaviour
     public Transform playerBody;
     private Rigidbody playerRb;
     float xRotation = 0f;
+    public float cutsceneDuration = 3f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        
+    }
     void Start()
     {
 
 
-        xRotation = transform.localRotation.eulerAngles.x;
+        // xRotation = transform.localRotation.eulerAngles.x;
 
-        if (xRotation > 180f)
-        {
-            xRotation -= 360f;
-        }
+        // if (xRotation > 180f)
+        // {
+        //     xRotation -= 360f;
+        // }
 
         playerRb = playerBody.GetComponent<Rigidbody>();
     }
@@ -25,6 +30,10 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        // Skip mouse control during cutscene
+        if (Time.timeSinceLevelLoad < cutsceneDuration)
+            return;
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 

@@ -24,11 +24,11 @@ public class PlayerInteractor : MonoBehaviour
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                Debug.Log(hit.collider.name + " in range!");
+                //Debug.Log(hit.collider.name + " in range!");
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    Debug.Log("Interacted with: " + hit.collider.name);
+                    //Debug.Log("Interacted with: " + hit.collider.name);
                     interactable.Interact();
                 }
             }

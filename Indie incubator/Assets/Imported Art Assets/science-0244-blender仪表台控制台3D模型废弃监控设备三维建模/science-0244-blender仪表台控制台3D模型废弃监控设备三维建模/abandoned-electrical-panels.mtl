@@ -1,0 +1,36 @@
+# Blender 3.6.0 MTL File: 'abandoned-electrical-panels.blend'
+# www.blender.org
+
+newmtl Material_#628
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.178544 0.178544 0.178544
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Material_#631
+Ka 1.000000 1.000000 1.000000
+Ks 0.044398 0.044398 0.044398
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd textures/Material _629_Base_Color.png
+map_Ns textures/Material _629_Roughness.png
+map_refl textures/Material _629_Metallic.png
+map_Bump -bm 1.000000 textures/Material _629_Normal_OpenGL.png
+
+newmtl Material_#632
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd textures/Material _627_Base_Color.png
+map_Ns textures/Material _627_Roughness.png
+map_refl textures/Material _627_Metallic.png
+map_Bump -bm 1.000000 textures/Material _627_Normal_OpenGL.png

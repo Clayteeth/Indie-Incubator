@@ -1,0 +1,62 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 01.02.2021 08:51:26
+
+newmtl katalka
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.8353 0.0000 0.0000
+	Kd 0.8353 0.0000 0.0000
+	Ks 0.3420 0.3420 0.3420
+	Ke 0.0000 0.0000 0.0000
+	map_Ka F:\Adaptive _project_scan\Katalka _dly trupov\Final_texture\Al model_set5_katalka_Diffuse.jpg
+	map_Kd F:\Adaptive _project_scan\Katalka _dly trupov\Final_texture\Al model_set5_katalka_Diffuse.jpg
+	map_bump Map__51_Normal_Bump.tga
+
+newmtl pokrivalo
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5647 0.5882 0.1765
+	Kd 0.5647 0.5882 0.1765
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka F:\Adaptive _project_scan\Katalka _dly trupov\Final_texture\Al model_set5_pokrivalo_Diffuse.jpg
+	map_Kd F:\Adaptive _project_scan\Katalka _dly trupov\Final_texture\Al model_set5_pokrivalo_Diffuse.jpg
+	map_bump -bm 0.3000 Map__64_Normal_Bump.tga
+
+newmtl pila
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1333 0.1333 0.1333
+	Kd 0.1333 0.1333 0.1333
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka F:\Adaptive _project_scan\Katalka _dly trupov\Final_texture\Al model_set5_pila_Diffuse.jpg
+	map_Kd F:\Adaptive _project_scan\Katalka _dly trupov\Final_texture\Al model_set5_pila_Diffuse.jpg
+	map_bump -bm 0.3000 Map__69_Normal_Bump.tga
+
+newmtl ruka
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.4471 0.3451
+	Kd 0.5882 0.4471 0.3451
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka F:\Adaptive _project_scan\Katalka _dly trupov\Final_texture\Al model_set5_ruka_Diffuse.jpg
+	map_Kd F:\Adaptive _project_scan\Katalka _dly trupov\Final_texture\Al model_set5_ruka_Diffuse.jpg
+	map_bump Map__57_Normal_Bump.tga

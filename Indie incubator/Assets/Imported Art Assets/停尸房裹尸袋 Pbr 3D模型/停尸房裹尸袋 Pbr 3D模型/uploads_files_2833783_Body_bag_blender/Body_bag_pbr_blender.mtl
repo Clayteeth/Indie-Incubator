@@ -1,0 +1,68 @@
+# Blender MTL File: 'Body_bag_pbr_blender.blend'
+# Material Count: 5
+
+newmtl katalka
+Ns 900.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.500000 0.500000 0.500000
+Ks 0.377273 0.377273 0.377273
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_katalka_BaseColor.jpg
+map_Ns F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_katalka_Roughness.jpg
+refl F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_katalka_Metallic.jpg
+
+newmtl pila
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.500000 0.500000 0.500000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_pila_BaseColor.jpg
+map_Ns F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_pila_Roughness.jpg
+map_d F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_pila_alpha.jpg
+refl F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_pila_Metallic.jpg
+
+newmtl pokrivalo
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.500000 0.500000 0.500000
+Ks 0.454545 0.454545 0.454545
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_pokrivalo_BaseColor.jpg
+map_Ns F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_pokrivalo_Roughness.jpg
+refl F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_pokrivalo_Metallic.jpg
+
+newmtl ruka
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.500000 0.500000 0.500000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Al model_set5_ruka_Diffuse.jpg
+map_Ns F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_ruka_Roughness.jpg
+refl F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_ruka_Metallic.jpg
+
+newmtl upakovka
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.500000 0.500000 0.500000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_upakovka_BaseColor.jpg
+map_Ns F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_upakovka_Roughness.jpg
+refl F:\\Adaptive _project_scan\\Katalka _dly trupov\\Final_texture\\Metall_pbr\\Al model_set5_upakovka_Metallic.jpg

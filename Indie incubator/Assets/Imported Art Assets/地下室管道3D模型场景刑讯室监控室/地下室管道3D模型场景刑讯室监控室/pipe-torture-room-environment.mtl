@@ -1,0 +1,74 @@
+# Blender 3.6.0 MTL File: 'pipe-torture-room-environment.blend'
+# www.blender.org
+
+newmtl Big_elements
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd textures/textures_Big_elements_BaseColor.png
+map_Ns textures/textures_Big_elements_Roughness.png
+map_refl textures/textures_Big_elements_Metallic.png
+map_Bump -bm 1.000000 textures/textures_Big_elements_Normal.png
+
+newmtl Command_tables
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd textures/textures_Command_tables_BaseColor.png
+map_Ns textures/textures_Command_tables_Roughness.png
+map_refl textures/textures_Command_tables_Metallic.png
+map_Ke textures/textures_Command_tables_Emmisive2.png
+map_Bump -bm 1.000000 textures/textures_Command_tables_Normal.png
+
+newmtl Material.001
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd textures/TUBES_SCULPT_low_defaultMat_BaseColor.png
+map_Ns textures/TUBES_SCULPT_low_defaultMat_Roughness.png
+map_refl textures/TUBES_SCULPT_low_defaultMat_Metallic.png
+map_Bump -bm 1.000000 textures/TUBES_SCULPT_low_defaultMat_Normal.png
+
+newmtl Pipes
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd textures/textures_Pipes_BaseColor.png
+map_Ns textures/textures_Pipes_Roughness.png
+map_refl textures/textures_Pipes_Metallic.png
+map_Bump -bm 1.000000 textures/textures_Pipes_Normal.png
+
+newmtl Scene_foundations
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd textures/textures_Scene_foundations_BaseColor.png
+map_Ns textures/textures_Scene_foundations_Roughness.png
+map_refl textures/textures_Scene_foundations_Metallic.png
+map_Bump -bm 1.000000 textures/textures_Scene_foundations_Normal.png
+
+newmtl ceiling_secondary
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd textures/textures_ceiling_secondary_BaseColor.png
+map_Ns textures/textures_ceiling_secondary_Roughness.png
+map_refl textures/textures_ceiling_secondary_Metallic.png
+map_Bump -bm 1.000000 textures/textures_ceiling_secondary_Normal.png

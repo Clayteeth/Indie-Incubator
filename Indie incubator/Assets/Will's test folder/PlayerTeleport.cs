@@ -19,43 +19,144 @@ public class PlayerTeleport : MonoBehaviour
     [Header("VFX")]
     public GameObject vfx; // placeholder atm
 
-    private bool isTeleporting = false;
-    private bool isOnLevelA = true;
+    [Header("Dialogues")]
+    public DialogueScriptableObject unableToTeleport;
+    public DialogueScriptableObject firstTeleportIntoColliderWarning;
+    public DialogueScriptableObject teleportTutorial;
+    public DialogueScriptableObject teleportTutorialWarning;
+
+    DialogueManager dialogueManager;
     Rigidbody rb;
+    bool isTeleporting = false;
+    bool firstWarningShown = false;
+    bool tutorialShown = false;
+    Coroutine teleportCoroutine;
 
     private void Start()
     {
+        dialogueManager = FindFirstObjectByType<DialogueManager>();
         rb = GetComponent<Rigidbody>();
-        vfx.SetActive(false);
-        isOnLevelA = true;
+        isTeleporting = false;
+        firstWarningShown = false;
+        tutorialShown = false;
     }
 
     void Update()
     {
         if (isTeleportingOnTimer) // Player will teleport back after timer ends
         {
-            if (Input.GetKeyDown(KeyCode.T) && !isTeleporting)
+            if (Input.GetKeyDown(KeyCode.T))
             {
-                StartCoroutine(TeleportRoutine());
+                if (!isTeleporting)
+                {
+                    teleportCoroutine = StartCoroutine(TeleportRoutine());
+                }
+                else
+                {
+                    StopCoroutine(teleportCoroutine);
+                    Teleport();
+                }
+                
             }
         }
         else // Player has to manually teleport back
         {
-            if (!isOnLevelA)
-            {
-                vfx.SetActive(true);
-            }
-            else vfx.SetActive(false);
             if (Input.GetKeyDown(KeyCode.T))
             {
                 Teleport();
             }
         }
 
+        // Show VFX when teleporting
+        if (isTeleporting)
+        {
+            vfx.SetActive(true);
+        }
+        else vfx.SetActive(false);
+
         // Print player position
         if (Input.GetKeyDown(KeyCode.P)) 
         {
             Debug.Log("Player current pos: " + rb.position);
+        }
+    }
+
+    IEnumerator TeleportRoutine()
+    {
+        #region Teleport To
+        // Check if hitting collider, prevent teleport if true
+        if (isTeleportingIntoCollider(teleportOffset))
+        {
+            Debug.Log("Unable to teleport");
+            if (unableToTeleport != null)
+                dialogueManager.StartDialogue(unableToTeleport.dialogueLines);
+            yield break;
+        }
+
+        // Teleport Player to level B
+        Vector3 originalPos = rb.position;
+        Vector3 targetPos = rb.position + teleportOffset;
+        MovePlayer(targetPos);
+        isTeleporting = !isTeleporting;
+        #endregion
+
+        yield return new WaitForSeconds(duration);
+
+        #region Teleport Back
+        // Check if hitting collider, teleport to original position if true
+        if (isTeleportingIntoCollider(-teleportOffset))
+        {
+            MovePlayer(originalPos);
+            isTeleporting = !isTeleporting;
+            if (!firstWarningShown && !tutorialShown && teleportTutorialWarning != null)
+            {
+                dialogueManager.StartDialogue(teleportTutorialWarning.dialogueLines);
+                firstWarningShown = true;
+                tutorialShown = true;
+            }
+            if (!firstWarningShown && firstTeleportIntoColliderWarning != null)
+            {
+                dialogueManager.StartDialogue(firstTeleportIntoColliderWarning.dialogueLines);
+                firstWarningShown = true;
+            }          
+        }
+        else
+        {
+            Vector3 returnPos = rb.position - teleportOffset;
+            MovePlayer(returnPos);
+            isTeleporting = !isTeleporting;
+        }
+
+        if(!tutorialShown && teleportTutorial != null)
+        {
+            dialogueManager.StartDialogue(teleportTutorial.dialogueLines);
+            tutorialShown = true;
+        }
+        #endregion
+    }
+
+    void Teleport()
+    {
+        // Check if hitting collider, prevent teleport if true
+        if (isTeleportingIntoCollider(teleportOffset))
+        {
+            Debug.Log("Unable to teleport");
+            if (unableToTeleport != null)
+                dialogueManager.StartDialogue(unableToTeleport.dialogueLines);
+            return;
+        }
+        // If on Level A, teleport to level B and vice versa
+        if (!isTeleporting)
+        {
+            Vector3 targetPos = rb.position + teleportOffset;
+            MovePlayer(targetPos);
+            isTeleporting = !isTeleporting;
+        }
+        else
+        {
+            Vector3 targetPos = rb.position - teleportOffset;
+            MovePlayer(targetPos);
+            isTeleporting = !isTeleporting;
         }
     }
 
@@ -65,78 +166,19 @@ public class PlayerTeleport : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
     }
 
-    IEnumerator TeleportRoutine()
-    {
-        // check if hitting collider
-        // TP to offset if no, unable to TP if yes
-        if(isTeleportingIntoCollider(teleportOffset))
-        {
-            Debug.Log("Unable to teleport");
-            yield break;
-        }
-
-        isTeleporting = true;
-        vfx.SetActive(true);
-
-        Vector3 originalPos = rb.position;
-        Vector3 targetPos = rb.position + teleportOffset;
-        MovePlayer(targetPos);
-
-        yield return new WaitForSeconds(duration);
-
-        // check if hitting collider
-        // TP to offset if no, TP to original pos if yes
-        Debug.Log("Original Pos Step 2: " + originalPos);
-        if (isTeleportingIntoCollider(-teleportOffset))
-        {
-            MovePlayer(originalPos);
-        }
-        else
-        {
-            Vector3 returnPos = rb.position - teleportOffset;
-            MovePlayer(returnPos);
-        }
-
-        isTeleporting = false;
-        vfx.SetActive(false);
-    }
-
     bool isTeleportingIntoCollider(Vector3 offset)
     {
         Vector3 targetPos = transform.position + offset;
         Collider[] overlaps = Physics.OverlapSphere(targetPos, 0.5f); // check if target is in any collider
         if (overlaps.Length > 0)
         {
-            Debug.Log("Destination blocked");
+            //Debug.Log("Destination blocked");
             return true;
         }
         return false;
     }
 
-    void Teleport()
-    {
-        // check if hitting collider
-        // TP to offset if no, unable to TP if yes
-        if (isTeleportingIntoCollider(teleportOffset))
-        {
-            Debug.Log("Unable to teleport");
-            return;
-        }
-        // If on Level A, teleport to level B and vice versa
-        if(isOnLevelA)
-        {
-            Vector3 targetPos = rb.position + teleportOffset;
-            MovePlayer(targetPos);
-            isOnLevelA = false;
-        }
-        else
-        {
-            Vector3 targetPos = rb.position - teleportOffset;
-            MovePlayer(targetPos);
-            isOnLevelA = true;
-        }
-    }
-
+    
     //IEnumerator Teleporting()
     //{
     //    isTeleporting = true;

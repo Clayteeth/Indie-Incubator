@@ -178,6 +178,9 @@ public class PlayerTeleport : MonoBehaviour
         return false;
     }
 
+}
+
+
     
     //IEnumerator Teleporting()
     //{
@@ -234,72 +237,74 @@ public class PlayerTeleport : MonoBehaviour
 
 
     //IEnumerator TeleportRoutine()
-    //{
-    //    // Determine direction based on current level
-    //    Vector3 goOffset    = isOnLevelA ?  teleportOffset : -teleportOffset;
-    //    Vector3 returnOffset = isOnLevelA ? -teleportOffset :  teleportOffset;
+    /*
+ï¿½ï¿½ï¿½ï¿½//{
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½// Determine direction based on current level
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½Vector3 goOffsetï¿½ï¿½ï¿½ = isOnLevelA ?ï¿½ teleportOffset : -teleportOffset;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½Vector3 returnOffset = isOnLevelA ? -teleportOffset :ï¿½ teleportOffset;
 
-    //    NavMeshSurface targetSurface = isOnLevelA ? navMeshB : navMeshA;
-    //    NavMeshSurface originSurface = isOnLevelA ? navMeshA : navMeshB;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½NavMeshSurface targetSurface = isOnLevelA ? navMeshB : navMeshA;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½NavMeshSurface originSurface = isOnLevelA ? navMeshA : navMeshB;
 
-    //    // --- Go ---
-    //    Vector3 goDestination;
-    //    if (!TryGetSafePosition(goOffset, targetSurface, out goDestination))
-    //    {
-    //        Debug.Log("Unable to teleport: destination blocked and no safe navmesh fallback.");
-    //        yield break;
-    //    }
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½// --- Go ---
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½Vector3 goDestination;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½if (!TryGetSafePosition(goOffset, targetSurface, out goDestination))
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½{
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Debug.Log("Unable to teleport: destination blocked and no safe navmesh fallback.");
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½yield break;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½}
 
-    //    isTeleporting = true;
-    //    vfx.SetActive(true);
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½isTeleporting = true;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½vfx.SetActive(true);
 
-    //    MovePlayer(goDestination);
-    //    isOnLevelA = !isOnLevelA;
-    //    Debug.Log("Teleported to: " + rb.position);
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½MovePlayer(goDestination);
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½isOnLevelA = !isOnLevelA;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½Debug.Log("Teleported to: " + rb.position);
 
-    //    yield return new WaitForSeconds(duration);
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½yield return new WaitForSeconds(duration);
 
-    //    // --- Return ---
-    //    Vector3 returnDestination;
-    //    if (!TryGetSafePosition(returnOffset, originSurface, out returnDestination))
-    //    {
-    //        Debug.Log("Unable to return: destination blocked and no safe navmesh fallback. Player stays.");
-    //        // Optionally: keep player on upper level, flip flag to match
-    //        isTeleporting = false;
-    //        vfx.SetActive(false);
-    //        yield break;
-    //    }
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½// --- Return ---
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½Vector3 returnDestination;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½if (!TryGetSafePosition(returnOffset, originSurface, out returnDestination))
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½{
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Debug.Log("Unable to return: destination blocked and no safe navmesh fallback. Player stays.");
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½// Optionally: keep player on upper level, flip flag to match
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½isTeleporting = false;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vfx.SetActive(false);
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½yield break;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½}
 
-    //    MovePlayer(returnDestination);
-    //    isOnLevelA = !isOnLevelA;
-    //    Debug.Log("Returned to: " + rb.position);
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½MovePlayer(returnDestination);
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½isOnLevelA = !isOnLevelA;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½Debug.Log("Returned to: " + rb.position);
 
-    //    isTeleporting = false;
-    //    vfx.SetActive(false);
-    //}
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½isTeleporting = false;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½vfx.SetActive(false);
+ï¿½ï¿½ï¿½ï¿½//}
 
 
 
-    // Returns true if a safe position was found, outputs the destination
-    //bool TryGetSafePosition(Vector3 offset, NavMeshSurface surface, out Vector3 destination)
-    //{
-    //    destination = rb.position + offset;
+ï¿½ï¿½ï¿½ï¿½// Returns true if a safe position was found, outputs the destination
+ï¿½ï¿½ï¿½ï¿½//bool TryGetSafePosition(Vector3 offset, NavMeshSurface surface, out Vector3 destination)
+ï¿½ï¿½ï¿½ï¿½//{
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½destination = rb.position + offset;
 
-    //    Collider[] overlaps = Physics.OverlapSphere(destination, overlapCheckRadius);
-    //    if (overlaps.Length == 0)
-    //        return true; // Clear path, use it directly
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½Collider[] overlaps = Physics.OverlapSphere(destination, overlapCheckRadius);
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½if (overlaps.Length == 0)
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½return true; // Clear path, use it directly
 
-    //    Debug.Log("Destination blocked, sampling navmesh for fallback position.");
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½Debug.Log("Destination blocked, sampling navmesh for fallback position.");
 
-    //    NavMeshHit hit;
-    //    int areaMask = 1 << NavMesh.GetAreaFromName("Walkable"); // Correct: area mask not layer mask
-    //    if (NavMesh.SamplePosition(destination, out hit, navMeshSampleRadius, areaMask))
-    //    {
-    //        destination = hit.position;
-    //        return true;
-    //    }
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½NavMeshHit hit;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½int areaMask = 1 << NavMesh.GetAreaFromName("Walkable"); // Correct: area mask not layer mask
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½if (NavMesh.SamplePosition(destination, out hit, navMeshSampleRadius, areaMask))
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½{
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½destination = hit.position;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½return true;
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½}
 
-    //    Debug.LogWarning("No safe navmesh position found near " + destination);
-    //    return false;
-    //}
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½Debug.LogWarning("No safe navmesh position found near " + destination);
+ï¿½ï¿½ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½return false;
+ï¿½ï¿½ï¿½ï¿½//}
 }
+*/

@@ -6,7 +6,8 @@ public class EnemyFollow : MonoBehaviour
     public Transform player;
     private NavMeshAgent agent;
 
-    public bool isUsingNavmesh; //temp thing
+    public bool isUsingNavmesh;
+    [Tooltip("Only when not using NavMesh")]
     public float moveSpeed = 3f;
 
     void Start()

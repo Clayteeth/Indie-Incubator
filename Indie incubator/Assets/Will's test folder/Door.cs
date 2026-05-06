@@ -4,6 +4,10 @@ public class Door : MonoBehaviour, IInteractable
 {
     public float doorSpeed = 2f; // 0.5 second
     public Vector3 rotationAngle;
+    public bool isLocked = false;
+    public DialogueScriptableObject doorLockedDialogue;
+
+    public DialogueManager dialogueManager;
 
     private Quaternion closedRotation;
     private Quaternion openRotation;
@@ -17,6 +21,7 @@ public class Door : MonoBehaviour, IInteractable
 
     void Start()
     {
+        dialogueManager = FindFirstObjectByType<DialogueManager>();
         closedRotation = transform.rotation;
         openRotation = transform.rotation * Quaternion.Euler(rotationAngle);
         targetRotation = closedRotation;
@@ -43,6 +48,16 @@ public class Door : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (isLocked)
+        {
+            if (doorLockedDialogue != null)
+            {
+                dialogueManager.StartDialogue(doorLockedDialogue.dialogueLines);
+                //Debug.Log("Door is locked");
+            }
+            return;
+        }
+
         if (isRotating) return;
 
         isClosed = !isClosed;

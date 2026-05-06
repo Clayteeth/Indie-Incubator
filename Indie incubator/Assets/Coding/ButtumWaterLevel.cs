@@ -17,10 +17,15 @@ public class ButtumWaterLevel : MonoBehaviour
     private Vector3 waterTargetPos;
     private Vector3 doorTargetPos;
 
+    public GameObject enemyA;
+    public GameObject enemyTriggerA;
+    public GameObject enemyTriggerB;
+
     void Start()
     {
         waterTargetPos = new Vector3(platform.position.x, platform.position.y - lowerAmount, platform.position.z);
         doorTargetPos = new Vector3(doorOpen.position.x + openAmount, doorOpen.position.y, doorOpen.position.z);
+        enemyTriggerB.SetActive(false);
     }
 
     void Update()
@@ -29,6 +34,9 @@ public class ButtumWaterLevel : MonoBehaviour
         {
             isLowering = true;
             isOpening = true;
+            enemyA.SetActive(false);
+            enemyTriggerA.SetActive(false);
+            enemyTriggerB.SetActive(true);
         }
 
         if (isLowering == true)

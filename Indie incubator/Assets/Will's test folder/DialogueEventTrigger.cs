@@ -14,11 +14,9 @@ public class DialogueEventTrigger : MonoBehaviour
     private DialogueManager dialogueManager;
 
     public bool isLocked = false;
-    //public GameObject objFlag;
 
     void Start()
     {
-        //dialogueManager = FindObjectOfType<DialogueManager>();
         dialogueManager = FindFirstObjectByType<DialogueManager>();
         hasTriggered = false;
     }
@@ -28,9 +26,6 @@ public class DialogueEventTrigger : MonoBehaviour
         if (triggerOnlyOnce)
             if (hasTriggered)
                 gameObject.SetActive(false);
-
-        //if (!objFlag.activeSelf || objFlag == null)
-        //    isLocked = false;
 
         if (playerInRange && autoTrigger)
         {
@@ -51,12 +46,6 @@ public class DialogueEventTrigger : MonoBehaviour
             playerInRange = false;
             hasTriggered = true;
         }
-
-        //if (playerInRange && Input.GetKeyDown(KeyCode.T)) //AYYY IM TESTING OVER HERE
-        //{
-        //    string totalLines = GetDialogueTotalLines().ToString();
-        //    Debug.Log(totalLines);
-        //}
     }
 
     public int GetDialogueTotalLines()
@@ -69,7 +58,7 @@ public class DialogueEventTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            Debug.Log("Player entered range!");
+            Debug.Log("Player entered range of: " + gameObject.name);
         }
     }
 
@@ -78,7 +67,7 @@ public class DialogueEventTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            Debug.Log("Player left range!");
+            Debug.Log("Player left range of: " + gameObject.name);
         }
     }
 }

@@ -4,9 +4,10 @@ public class PlayerInteractor : MonoBehaviour
 {
     // Using Raycast to find interactable game object
 
-    //public string interactableTag;
     public float interactRange = 3f;
     public Camera playerCamera;
+
+    public GameObject dialoguePanel;
 
     void Start()
     {
@@ -28,8 +29,13 @@ public class PlayerInteractor : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    // Prevent interaction when dialogue is active since there are problems
+                    // when both interaction key and dialogue keys are the same
+                    if (dialoguePanel != null && dialoguePanel.activeSelf)
+                        return; 
+                    else
+                        interactable.Interact();
                     //Debug.Log("Interacted with: " + hit.collider.name);
-                    interactable.Interact();
                 }
             }
         }

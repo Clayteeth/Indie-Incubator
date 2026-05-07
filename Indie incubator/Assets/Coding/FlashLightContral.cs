@@ -8,6 +8,10 @@ public class FlashlightSystem : MonoBehaviour
     private Light lightComp;
     private bool unlocked = false;
 
+    public AudioSource audioSource;
+
+    public AudioSource audioSource1;
+
     void Start()
     {
         lightComp = GetComponent<Light>();
@@ -19,6 +23,7 @@ public class FlashlightSystem : MonoBehaviour
         if (Vector3.Distance(transform.position, button.position) <= interactDistance && Input.GetKeyDown(KeyCode.E) && unlocked == false)
         {
             unlocked = true;
+            audioSource1.Play();
             //Destroy(button.gameObject);
             button.GetComponentInChildren<MeshRenderer>().enabled = false;
         }
@@ -26,6 +31,7 @@ public class FlashlightSystem : MonoBehaviour
 
         if (unlocked == true && Input.GetKeyDown(KeyCode.F))
         {
+            audioSource.Play();
             lightComp.enabled = !lightComp.enabled;
         }
     }

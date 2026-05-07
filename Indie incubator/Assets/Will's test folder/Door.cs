@@ -19,6 +19,10 @@ public class Door : MonoBehaviour, IInteractable
     bool isRotating = false;
     float swingProgress = 0f; // go from 0 to 1
 
+    public float delay = 1f;
+
+    public AudioSource audioSource;
+
     void Start()
     {
         dialogueManager = FindFirstObjectByType<DialogueManager>();
@@ -29,9 +33,12 @@ public class Door : MonoBehaviour, IInteractable
 
     void Update()
     {
+
         if (isRotating)
         {
             swingProgress += Time.deltaTime * doorSpeed;
+
+            audioSource.Play();
 
             // Make the door swing fast at the start and slow down at the end
             float easedSwingProgress = 1f - Mathf.Pow(1f - Mathf.Clamp01(swingProgress), 3f);
@@ -44,7 +51,9 @@ public class Door : MonoBehaviour, IInteractable
                 swingProgress = 0f;
             } // just snap to target rotation
         }
+
     }
+    
 
     public void Interact()
     {

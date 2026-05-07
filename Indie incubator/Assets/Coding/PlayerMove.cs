@@ -18,9 +18,19 @@ public class PlayerMove : MonoBehaviour
 
     public Vector3 MoveVec { get; private set;}
 
+    public AudioSource footstepAudioSource;
+    public AudioClip movementSound;
+    private bool isMoving = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
+        // Get AudioSource if not assigned in inspector
+        if (footstepAudioSource == null)
+        {
+            footstepAudioSource = GetComponent<AudioSource>();
+        }
     }
 
     // Update is called once per frame
@@ -50,6 +60,31 @@ public class PlayerMove : MonoBehaviour
 
         movement = (transform.right * x + transform.forward * z) * moveSpeed;
         rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
+
+        // Check if player is moving
+        bool playerMoving = (x != 0 || z != 0);
+
+        // Play or stop sound based on movement state
+        if (playerMoving && !isMoving)
+        {
+            // Start moving - play sound
+            if (footstepAudioSource != null && movementSound != null)
+            {
+                footstepAudioSource.clip = movementSound;
+                footstepAudioSource.loop = true;
+                footstepAudioSource.Play();
+            }
+            isMoving = true;
+        }
+        else if (!playerMoving && isMoving)
+        {
+            // Stopped moving - stop sound
+            if (footstepAudioSource != null)
+            {
+                footstepAudioSource.Stop();
+            }
+            isMoving = false;
+        }
 
         if (onElevator == true && currentElevator != null)
         {

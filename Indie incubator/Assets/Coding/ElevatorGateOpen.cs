@@ -16,6 +16,7 @@ public class ElevatorGateOpen : MonoBehaviour
 
     private Vector3 closedPos;
     private Vector3 openPos;
+    public AudioSource audioSource;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class ElevatorGateOpen : MonoBehaviour
         if (playerInRange == true && Input.GetKeyDown(KeyCode.E) && isOpening == false && isClosing == false)
         {
             isOpening = true;
+            audioSource.Play();
         }
 
         // OPENING

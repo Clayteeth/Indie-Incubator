@@ -26,6 +26,16 @@ public class NonoGas : MonoBehaviour
     public GameObject particleEffect15;
     public GameObject gasTigger;
 
+    public AudioSource audioSource;
+
+    public AudioSource audioSource1;
+
+    public AudioSource audioSource2;
+
+    public AudioSource audioSource3;    
+
+    public AudioSource audioSource4;
+
     public BoxCollider gasTiggerCollider;
 
     private Vector3 startPos;
@@ -44,6 +54,12 @@ public class NonoGas : MonoBehaviour
         if (playerInRange == true && Input.GetKeyDown(KeyCode.E))
         {
             isLowering = true;
+
+            audioSource.Play();
+            audioSource1.Stop();
+            audioSource2.Stop();
+            audioSource3.Stop();
+            audioSource4.Stop();
 
             if (particleEffect1 != null)
             {

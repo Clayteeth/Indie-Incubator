@@ -23,6 +23,8 @@ public class Door : MonoBehaviour, IInteractable
 
     public AudioSource audioSource;
 
+    public AudioSource doorLockedAudioSource;
+
     void Start()
     {
         dialogueManager = FindFirstObjectByType<DialogueManager>();
@@ -59,10 +61,12 @@ public class Door : MonoBehaviour, IInteractable
     {
         if (isLocked)
         {
+            doorLockedAudioSource.Play();
             if (doorLockedDialogue != null)
             {
                 dialogueManager.StartDialogue(doorLockedDialogue.dialogueLines);
                 //Debug.Log("Door is locked");
+
             }
             return;
         }

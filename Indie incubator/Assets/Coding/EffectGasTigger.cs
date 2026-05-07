@@ -12,6 +12,30 @@ public class EffectGasTigger : MonoBehaviour
     public GameObject particleEffect7;
     public GameObject particleEffect8;
 
+    public GameObject lightObject;
+
+    public GameObject lightObject1;
+
+    public GameObject lightObject2;
+
+    public GameObject lightObject3;
+
+    public GameObject lightObject4;
+
+    public GameObject lightObject5;
+
+    public GameObject lightObject6;
+
+    public GameObject NlightObject7;
+
+    public GameObject NlightObject8;
+
+    public GameObject NlightObject9;
+
+    public GameObject NlightObject10;
+
+    public GameObject NlightObject11;
+
     public AudioSource audioSource;
 
     public AudioSource audioSource1;
@@ -24,6 +48,8 @@ public class EffectGasTigger : MonoBehaviour
 
     public float delay = 3f;
 
+    public float delay1 = 1f;
+
     private bool hasTriggered = false;
 
     public Door door;
@@ -35,6 +61,13 @@ public class EffectGasTigger : MonoBehaviour
         particleEffect2.SetActive(false);
         particleEffect3.SetActive(false);
         particleEffect4.SetActive(false);
+        lightObject.SetActive(false);
+        lightObject1.SetActive(false);
+        lightObject2.SetActive(false);  
+        lightObject3.SetActive(false);
+        lightObject4.SetActive(false);
+        lightObject5.SetActive(false);
+        lightObject6.SetActive(false);
         //particleEffect5.SetActive(false);
     }
 
@@ -47,7 +80,7 @@ public class EffectGasTigger : MonoBehaviour
 
             audioSource1 .Play();
 
-
+            Invoke(nameof(LightSwitch), delay1);
             Invoke(nameof(PlayEffect), delay);
             Invoke(nameof(PlaySound), delay);
 
@@ -81,5 +114,21 @@ public class EffectGasTigger : MonoBehaviour
         audioSource2.Play();
         audioSource3.Play();
         audioSource4.Play();
+    }
+
+    void LightSwitch()
+    {
+        lightObject.SetActive(true);
+        lightObject1.SetActive(true);
+        lightObject2.SetActive(true);
+        lightObject3.SetActive(true);
+        lightObject4.SetActive(true);
+        lightObject5.SetActive(true);
+        lightObject6.SetActive(true);
+        NlightObject7.SetActive(false);
+        NlightObject8.SetActive(false);
+        NlightObject9.SetActive(false);
+        NlightObject10.SetActive(false);
+        NlightObject11.SetActive(false);
     }
 }

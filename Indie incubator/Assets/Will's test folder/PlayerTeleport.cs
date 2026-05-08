@@ -25,6 +25,8 @@ public class PlayerTeleport : MonoBehaviour
     public DialogueScriptableObject teleportTutorial;
     public DialogueScriptableObject teleportTutorialWarning;
 
+    public AudioSource teleportSound;
+
     DialogueManager dialogueManager;
     Rigidbody rb;
     bool isTeleporting = false;
@@ -122,6 +124,7 @@ public class PlayerTeleport : MonoBehaviour
         }
         else
         {
+            //teleportSound.Play();
             Vector3 returnPos = rb.position - teleportOffset;
             MovePlayer(returnPos);
             isTeleporting = !isTeleporting;
@@ -148,12 +151,14 @@ public class PlayerTeleport : MonoBehaviour
         // If on Level A, teleport to level B and vice versa
         if (!isTeleporting)
         {
+            //teleportSound.Play();
             Vector3 targetPos = rb.position + teleportOffset;
             MovePlayer(targetPos);
             isTeleporting = !isTeleporting;
         }
         else
         {
+            //teleportSound.Play();
             Vector3 targetPos = rb.position - teleportOffset;
             MovePlayer(targetPos);
             isTeleporting = !isTeleporting;
@@ -162,6 +167,7 @@ public class PlayerTeleport : MonoBehaviour
 
     void MovePlayer(Vector3 destination)
     {
+        teleportSound.Play();
         rb.MovePosition(destination);
         rb.linearVelocity = Vector3.zero;
     }

@@ -11,6 +11,8 @@ public class platfrommove : MonoBehaviour
     private bool canActivate;
     private float timer = 0f;
 
+    public AudioSource soundEffect;
+
     void Start()
     {
         transform.position = points[0].position;
@@ -30,7 +32,7 @@ public class platfrommove : MonoBehaviour
         {
             return;
         }
-
+        soundEffect.Play();
         transform.position = Vector3.MoveTowards(transform.position, points[targetPoint].position, speed * Time.deltaTime);
 
         if (transform.position == points[targetPoint].position)
@@ -52,13 +54,15 @@ public class platfrommove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(transform);
+            //collision.transform.SetParent(transform);
 
             if (canActivate == true && isMoving == false && timer <= 0f)
             {
                 isMoving = true;
                 canActivate = false;
                 timer = cooldownTime;
+                //soundEffect.Play();
+                
             }
         }
     }
@@ -67,7 +71,7 @@ public class platfrommove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(null);
+            //collision.transform.SetParent(null);
 
             if (isMoving == false)
             {

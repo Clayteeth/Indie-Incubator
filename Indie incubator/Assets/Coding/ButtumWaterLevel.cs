@@ -21,6 +21,14 @@ public class ButtumWaterLevel : MonoBehaviour
     public GameObject enemyTriggerA;
     public GameObject enemyTriggerB;
 
+    public AudioSource buttonSound;
+
+    public AudioSource doorSound;
+
+    public AudioSource waterSound;
+
+    public WaterSound enterSound;
+
     void Start()
     {
         waterTargetPos = new Vector3(platform.position.x, platform.position.y - lowerAmount, platform.position.z);
@@ -37,6 +45,12 @@ public class ButtumWaterLevel : MonoBehaviour
             enemyA.SetActive(false);
             enemyTriggerA.SetActive(false);
             enemyTriggerB.SetActive(true);
+
+            enterSound.disableSound = true;
+
+            buttonSound.Play();
+            doorSound.Play();
+            waterSound.Play();
         }
 
         if (isLowering == true)
@@ -46,6 +60,7 @@ public class ButtumWaterLevel : MonoBehaviour
             if (Vector3.Distance(platform.position, waterTargetPos) < 0.01f)
             {
                 isLowering = false;
+
             }
         }
 

@@ -175,10 +175,14 @@ public class PlayerTeleport : MonoBehaviour
     bool isTeleportingIntoCollider(Vector3 offset)
     {
         Vector3 targetPos = transform.position + offset;
-        Collider[] overlaps = Physics.OverlapSphere(targetPos, 0.5f); // check if target is in any collider
+        Collider[] overlaps = Physics.OverlapSphere(targetPos, 0.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore); // check if target is in any collider
         if (overlaps.Length > 0)
         {
             //Debug.Log("Destination blocked");
+            foreach (Collider col in overlaps)
+            {
+                Debug.Log("Destination blocked by: " + col.gameObject.name);
+            }
             return true;
         }
         return false;

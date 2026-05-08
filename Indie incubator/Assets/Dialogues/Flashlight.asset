@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueScriptableObject
   dialogueLines:
   - dialogueText: Oh good a flashlight.
-  - dialogueText: Oh good a flashlight.
+  - dialogueText: I should press E on the flashlight and then F.

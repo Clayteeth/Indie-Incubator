@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueScriptableObject
   dialogueLines:
   - dialogueText: I should press E on these doors.
-  - dialogueText: I should press E on the flashlight and then F.

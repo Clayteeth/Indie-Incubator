@@ -198,8 +198,8 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.7028302, g: 0.38125223, b: 0.38125223, a: 1}
+    - _Color: {r: 0.7028302, g: 0.3812522, b: 0.3812522, a: 1}
     - _DecalColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveTintUI: {r: 1, g: 1, b: 1, a: 1}

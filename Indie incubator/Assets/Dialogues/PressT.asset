@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PressT
   m_EditorClassIdentifier: Assembly-CSharp::DialogueScriptableObject
   dialogueLines:
-  - dialogueText: My head hurts  ;o; Try pressing T
+  - dialogueText: My head hurts  ;o;
+  - dialogueText: Something tells me I should try pressing T

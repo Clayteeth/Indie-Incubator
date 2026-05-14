@@ -9,6 +9,8 @@ public class Door : MonoBehaviour, IInteractable
 
     public DialogueManager dialogueManager;
 
+    public GameObject edisplay;
+
     private Quaternion closedRotation;
     private Quaternion openRotation;
 
@@ -41,6 +43,8 @@ public class Door : MonoBehaviour, IInteractable
             swingProgress += Time.deltaTime * doorSpeed;
 
             audioSource.Play();
+
+            edisplay.SetActive(false);
 
             // Make the door swing fast at the start and slow down at the end
             float easedSwingProgress = 1f - Mathf.Pow(1f - Mathf.Clamp01(swingProgress), 3f);

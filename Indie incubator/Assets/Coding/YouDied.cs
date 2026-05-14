@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+/*
 public class EnemyKillPlayer : MonoBehaviour
 {
     public GameObject deathUI;       
@@ -61,3 +61,4 @@ public class EnemyKillPlayer : MonoBehaviour
         dead = false;
     }
 }
+*/

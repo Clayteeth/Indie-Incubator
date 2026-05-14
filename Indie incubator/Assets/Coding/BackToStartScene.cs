@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartScreen : MonoBehaviour
+public class BackToStartScene : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +17,6 @@ public class StartScreen : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void LoadSampleScene()
     {
-        SceneManager.LoadScene("Act 1");
-        Cursor.visible = false;
+        SceneManager.LoadScene("Title Screen");
     }
 }

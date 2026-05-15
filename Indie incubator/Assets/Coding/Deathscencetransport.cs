@@ -11,8 +11,7 @@ public class Deathscencetransport : MonoBehaviour
     public GameObject player; // Assign your player GameObject here
     public Transform respawnPoint; // Assign the respawn point Transform here
 
-
-
+    public CameraMovement cameraMovement;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,7 +19,7 @@ public class Deathscencetransport : MonoBehaviour
         {
             DeathUI.SetActive(true);
             isPlayerDead = true;
-            
+            cameraMovement.enabled = false;
         }
     }
 
@@ -33,6 +32,7 @@ public class Deathscencetransport : MonoBehaviour
                 player.transform.position = respawnPoint.position;
                 isPlayerDead = false;
                 DeathUI.SetActive(false);
+                cameraMovement.enabled = false;
             }
         }
     }

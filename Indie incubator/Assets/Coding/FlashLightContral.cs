@@ -26,6 +26,7 @@ public class FlashlightSystem : MonoBehaviour
             audioSource1.Play();
             //Destroy(button.gameObject);
             button.GetComponentInChildren<MeshRenderer>().enabled = false;
+            Debug.Log("Flashlight picked up");
         }
 
 

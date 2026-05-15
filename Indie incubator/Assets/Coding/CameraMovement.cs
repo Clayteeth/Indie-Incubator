@@ -7,27 +7,14 @@ public class CameraMovement : MonoBehaviour
     private Rigidbody playerRb;
     float xRotation = 0f;
     public float cutsceneDuration = 3f;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
-    {
-        
-    }
+
     void Start()
     {
-
-
-        // xRotation = transform.localRotation.eulerAngles.x;
-
-        // if (xRotation > 180f)
-        // {
-        //     xRotation -= 360f;
-        // }
-
         playerRb = playerBody.GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         // Skip mouse control during cutscene
@@ -45,5 +32,17 @@ public class CameraMovement : MonoBehaviour
         Quaternion deltaRotation = Quaternion.Euler(0f, mouseX, 0f);
         playerRb.MoveRotation(playerRb.rotation * deltaRotation);
         //playerBody.Rotate(Vector3.up * mouseX);
+    }
+
+    void OnEnable()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

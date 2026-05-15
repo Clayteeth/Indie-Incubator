@@ -24974,7 +24974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &97259749
 Transform:
   m_ObjectHideFlags: 0
@@ -116132,16 +116132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef76a008ac53104f9bf6d1072354bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::YouDied
-  deathUI: {fileID: 0}
-  respawnPoint: {fileID: 0}
-  ClawCameraV: {fileID: 0}
-  GroundCameraV: {fileID: 0}
-  deathCutsceneTime: 0
-  ENEMY_COPY: {fileID: 0}
-  playerScriptV: {fileID: 0}
-  playerCameraV: {fileID: 0}
-  Death_Start: 
-  dead: 0
 --- !u!54 &447026857
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -267827,6 +267817,10 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 768a987b696baa14c8fec7cbd1ea0667, type: 3}
+    - target: {fileID: 7921219119090754317, guid: 11b14000e8e055740b1b0b67b5011da2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -406921,7 +406915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1650367237
 Animator:
   serializedVersion: 7
@@ -410141,16 +410135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef76a008ac53104f9bf6d1072354bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::YouDied
-  deathUI: {fileID: 0}
-  respawnPoint: {fileID: 0}
-  ClawCameraV: {fileID: 0}
-  GroundCameraV: {fileID: 0}
-  deathCutsceneTime: 0
-  ENEMY_COPY: {fileID: 0}
-  playerScriptV: {fileID: 0}
-  playerCameraV: {fileID: 0}
-  Death_Start: 
-  dead: 0
 --- !u!54 &1661621295
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -479522,7 +479506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1943272980
 Transform:
   m_ObjectHideFlags: 0
@@ -479634,7 +479618,7 @@ MonoBehaviour:
   playerScriptV: {fileID: 563465398}
   playerCameraV: {fileID: 634568156}
   monsterCameraV: {fileID: 97259752}
-  cutsceneTime: 8
+  cutsceneTime: 22.05
 --- !u!1 &1943434376
 GameObject:
   m_ObjectHideFlags: 0

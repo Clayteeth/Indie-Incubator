@@ -67,26 +67,26 @@ AnimatorStateMachine:
     m_State: {fileID: 2057364405171373543}
     m_Position: {x: 410, y: 120, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 8884575476713512787}
-    m_Position: {x: 380, y: -10, z: 0}
+    m_State: {fileID: 8823483782028561198}
+    m_Position: {x: 350, y: 0, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 90, y: 140, z: 0}
+  m_EntryPosition: {x: 150, y: 130, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 8884575476713512787}
---- !u!1102 &8884575476713512787
+  m_DefaultState: {fileID: 8823483782028561198}
+--- !u!1102 &8823483782028561198
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Kill_NoSkin
+  m_Name: Idle_NoSkin
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -99,7 +99,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: ac7a3e2a24369ea4fae4fd7fc506307d, type: 3}
+  m_Motion: {fileID: 1827226128182048838, guid: ea3dd1f88af6410488f603cf96ef7ad8, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

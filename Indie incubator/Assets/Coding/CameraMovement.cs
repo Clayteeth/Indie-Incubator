@@ -11,8 +11,8 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         playerRb = playerBody.GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     void LateUpdate()
@@ -34,15 +34,15 @@ public class CameraMovement : MonoBehaviour
         //playerBody.Rotate(Vector3.up * mouseX);
     }
 
-    void OnEnable()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+    //void OnEnable()
+    //{
+       // Cursor.lockState = CursorLockMode.Locked;
+       // Cursor.visible = false;
+    //}
 
-    void OnDisable()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
+    // OnDisable()
+    //{
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
+   //}
 }
